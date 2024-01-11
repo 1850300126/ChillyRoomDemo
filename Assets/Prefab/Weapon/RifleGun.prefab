@@ -113,7 +113,7 @@ MonoBehaviour:
   shootSpeed: 10
   muzzle: {fileID: 8006240502917608995}
   bulletPrefab: {fileID: 2060928807209340948, guid: 7ffcd102cab88d442a1a1bdf887bc589, type: 3}
-  muzzle_fire: {fileID: 2448267797270852745, guid: 4d9e49be1a71f1f4e8a8726c5a67bc7b, type: 3}
+  muzzle_fire: {fileID: 1362605976994189673}
   throwEggshell: {fileID: 5962042112238214650, guid: 67d6787a516451844aee0b4fdf91fb7d, type: 3}
   throwEggshellPoint: {fileID: 3945380865477865139}
 --- !u!1001 &3679736104649188832
@@ -176,5 +176,10 @@ PrefabInstance:
 --- !u!4 &1184458955642034481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2549326941808868561, guid: 4d9e49be1a71f1f4e8a8726c5a67bc7b, type: 3}
+  m_PrefabInstance: {fileID: 3679736104649188832}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1362605976994189673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2448267797270852745, guid: 4d9e49be1a71f1f4e8a8726c5a67bc7b, type: 3}
   m_PrefabInstance: {fileID: 3679736104649188832}
   m_PrefabAsset: {fileID: 0}

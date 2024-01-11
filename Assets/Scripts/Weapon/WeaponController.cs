@@ -24,7 +24,7 @@ public class WeaponController : MonoBehaviour
         {
             GameObject _bullet = GetBullet();
             _bullet.SetActive(false);  
-            PoolSystem.instance.PushGameObject(_bullet);
+            // PoolSystem.instance.PushGameObject(_bullet);
         }
 
         muzzle_fire.SetActive(false);
@@ -62,15 +62,15 @@ public class WeaponController : MonoBehaviour
 
         ThrowEggshell();
 
-        GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
-        _bulletObject.transform.position = muzzle.position;
-        _bulletObject.transform.rotation = muzzle.rotation;
+        // GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
+        // _bulletObject.transform.position = muzzle.position;
+        // _bulletObject.transform.rotation = muzzle.rotation;
 
-        Bullet _bullet = _bulletObject.GetComponent<Bullet>();
+        // Bullet _bullet = _bulletObject.GetComponent<Bullet>();
             
-        Vector2 _muzzleTrans = new Vector2(muzzle.right.x, muzzle.right.y);  
+        // Vector2 _muzzleTrans = new Vector2(muzzle.right.x, muzzle.right.y);  
 
-        _bullet.rb2D.velocity = _muzzleTrans * _bullet.bullet_speed;
+        // _bullet.rb2D.velocity = _muzzleTrans * _bullet.bullet_speed;
     }
 
     private GameObject GetBullet()

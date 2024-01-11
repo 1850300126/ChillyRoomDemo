@@ -70,17 +70,17 @@ public class PlayerStateBase : IState
     {
         playerStateMachine.playerController.player_input.playerInputAciton.Movement.Jump.started -= OnJump;
         playerStateMachine.playerController.player_input.playerInputAciton.Movement.Attack.started -= OnAttackStart;
-        playerStateMachine.playerController.player_input.playerInputAciton.Movement.Attack.canceled += OnAttackCanceled;
+        playerStateMachine.playerController.player_input.playerInputAciton.Movement.Attack.canceled -= OnAttackCanceled;
 
 
-        playerStateMachine.playerController.player_input.playerInputAciton.Movement.LockDirection.started += OnLockDirection;
-        playerStateMachine.playerController.player_input.playerInputAciton.Movement.LockDirection.canceled += OnUnLockDirection;
+        playerStateMachine.playerController.player_input.playerInputAciton.Movement.LockDirection.started -= OnLockDirection;
+        playerStateMachine.playerController.player_input.playerInputAciton.Movement.LockDirection.canceled -= OnUnLockDirection;
     }
     #endregion
     #region 输入事件
     // 得到用户输入结果
     private void ReadMovementInput()
-    {
+    {   
         playerStateMachine.SharedData.playerInputValue = playerStateMachine.playerController.player_input.playerInputAciton.Movement.Move.ReadValue<Vector2>();
     }
     protected void GetPlayerInput()
@@ -98,7 +98,7 @@ public class PlayerStateBase : IState
     }
     // 当跳跃时
     protected void OnJump(InputAction.CallbackContext context)
-    {
+    {   
         if (playerStateMachine.playerController.mIsOnGround || (playerStateMachine.playerController.canDoubleJump && playerStateMachine.playerController.jumpTimes < 1))
         {
             playerStateMachine.ChangeState(playerStateMachine.playerJumpState);
@@ -114,11 +114,11 @@ public class PlayerStateBase : IState
     }
     protected void OnLockDirection(InputAction.CallbackContext context)
     {
-        playerStateMachine.playerController.canFlip = true;
+        playerStateMachine.playerController.canFlip = false;
     }
     protected void OnUnLockDirection(InputAction.CallbackContext context)
     {
-        playerStateMachine.playerController.canFlip = false;
+        playerStateMachine.playerController.canFlip = true;
     }
     #endregion
 

@@ -16,11 +16,6 @@ public class CamaraController : MonoBehaviour
         noiseProfile = main_cm.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    private void Start()
-    {
-
-    }
-
     public void SwitchFollowPoint(bool left)
     {
         if(left)

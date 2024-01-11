@@ -506,7 +506,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1e-45, z: -0, w: 1}
-  m_LocalPosition: {x: 1.999993, y: -1, z: -10}
+  m_LocalPosition: {x: 2, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -657,9 +657,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8fef08bf4c4a044d959a41ef20c915e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2060928807209340948, guid: 7ffcd102cab88d442a1a1bdf887bc589, type: 3}
   weapons:
   - weaponName: RifleGun
     weapon: {fileID: 8652161188572126548, guid: e13fabfd40de4e842910d03b34e850dc, type: 3}
+  - weaponName: ShotGun
+    weapon: {fileID: 8269179590713463712, guid: 78cd08b3e3a3465449ba2110055da6cd, type: 3}
 --- !u!4 &845053054
 Transform:
   m_ObjectHideFlags: 0
@@ -4532,14 +4535,14 @@ MonoBehaviour:
   jumpSpeed: 7
   canDoubleJump: 1
   canFlip: 1
-  myRigidBody2D: {fileID: 0}
-  myAnimator: {fileID: 0}
-  playerFeet: {fileID: 0}
-  player_input: {fileID: 0}
+  myRigidBody2D: {fileID: 1075245946}
+  myAnimator: {fileID: 1160356262252697084}
+  playerFeet: {fileID: 1075245948}
+  player_input: {fileID: 1075245951}
   mIsOnGround: 1
   jumpTimes: 0
   fire: 0
-  camaraController: {fileID: 0}
+  camaraController: {fileID: 1075245949}
   current_weapon: {fileID: 0}
   weaponPoint: {fileID: 133193590}
 --- !u!114 &1075245951
@@ -6080,7 +6083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f75f46e41d21c5746b65fb7732b703ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  poolRootObj: {fileID: 1324975619}
+  pools: []
 --- !u!1 &1429435202
 GameObject:
   m_ObjectHideFlags: 0

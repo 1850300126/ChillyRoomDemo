@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -13,12 +14,19 @@ public class WeaponInfo
 
 public class WeaponManager : MonoBehaviour
 {   
+    // ×Óµ¯Ô¤ÖÆ
+    public GameObject bulletPrefab;
     public List<WeaponInfo> weapons = new List<WeaponInfo>();
 
     public static WeaponManager instance;
     private void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        PushPool();
     }
 
     public WeaponBase GetWeaponFromName(PlayerContro holder, string name)
@@ -32,18 +40,22 @@ public class WeaponManager : MonoBehaviour
 
         foreach (var _weapon in weapons)
         {
-            _weapon.weaponName = name;
+            if(_weapon.weaponName == name)
+            {
+                WeaponBase _targetWeapon = Instantiate(_weapon.weapon, holder.myAnimator.transform);
 
-            WeaponBase _targetWeapon = Instantiate(_weapon.weapon, holder.myAnimator.transform);
+                _targetWeapon.Init(holder);
 
-            _targetWeapon.Init(holder);
-
-            return _weapon.weapon;
+                return _targetWeapon;
+            }
         }
-
         return null;
     }
 
+    public void PushPool()
+    {
+        PoolSystem.instance.AddPool("bullet", bulletPrefab, 50);
+    }
     public void DestroyCurrentWeapon(WeaponBase weapon)
     {
         Destroy(weapon.gameObject);

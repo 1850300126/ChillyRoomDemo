@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RifleGun : WeaponBase
@@ -12,37 +13,22 @@ public class RifleGun : WeaponBase
     public float shootSpeed;
     // 枪口位置
     public Transform muzzle;
-    // 子弹预制
-    public GameObject bulletPrefab;
     // 枪口火焰预制
     public GameObject muzzle_fire;
     // 抛壳预制
     public GameObject throwEggshell;
     // 抛壳位置
     public Transform throwEggshellPoint;
-
-
-    private string BulletName;
     private float shoot_timer = 0;
     public override void Init(PlayerContro holder)
-    {
+    {   
         this.holder = holder;
-
-        PushPool();
+        
+        muzzle_fire.SetActive(false);
     }
     public override void Fire()
-    {
+    {   
         RepeatingRifle();
-    }
-    public void PushPool()
-    {
-        for (int i = 0; i < 50; i++)
-        {
-            GameObject _bullet = GetBullet();
-            _bullet.SetActive(false);
-            PoolSystem.instance.PushGameObject(_bullet);
-        }
-        muzzle_fire.SetActive(false);
     }
 
     public void RepeatingRifle()
@@ -80,15 +66,6 @@ public class RifleGun : WeaponBase
 
         // 发射子弹
         ShootBullet();
-
-    }
-    private GameObject GetBullet()
-    {
-        GameObject _obj = Instantiate(bulletPrefab);
-
-        BulletName = _obj.name;
-
-        return _obj;
 
     }
 
@@ -133,9 +110,7 @@ public class RifleGun : WeaponBase
 
     private void ShootBullet()
     { 
-        GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
-        _bulletObject.transform.position = muzzle.position;
-        _bulletObject.transform.rotation = muzzle.rotation;
+        GameObject _bulletObject = PoolSystem.instance.PushFromPoolAndDistoryByTime("bullet", muzzle.position, muzzle.rotation, 10f);
 
         Bullet _bullet = _bulletObject.GetComponent<Bullet>();
 

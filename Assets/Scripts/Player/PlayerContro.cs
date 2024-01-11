@@ -44,7 +44,7 @@ public class PlayerContro : MonoBehaviour
     {
         Init();
 
-        current_weapon = WeaponManager.instance.GetWeaponFromName(this, "RifleGun");
+        current_weapon = WeaponManager.instance.GetWeaponFromName(this, "ShotGun");
     }
 
     // Update is called once per frame

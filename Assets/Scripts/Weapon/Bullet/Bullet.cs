@@ -15,8 +15,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {   
             Instantiate(bulletBoom, this.transform.position, Quaternion.identity);
-
-            PoolSystem.instance.PushGameObject(this.gameObject);
+            
             this.gameObject.SetActive(false);
         }
     }
