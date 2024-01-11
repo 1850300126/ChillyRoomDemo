@@ -5,10 +5,11 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     public float shoot_speed;
-    public Transform weapon_muzzle;
+    public Transform muzzle;
     public GameObject bulletPrefab;
+    public GameObject muzzle_fire;
 
-    public string BulletName;
+    private string BulletName;
 
     private float shoot_timer = 0;
 
@@ -20,10 +21,12 @@ public class WeaponController : MonoBehaviour
             _bullet.SetActive(false);  
             PoolSystem.instance.PushGameObject(_bullet);
         }
+
+        muzzle_fire.SetActive(false);
     }
 
     public void Fire()
-    {
+    {   
         float shooting_interval;
         if (shoot_speed == 0)
         {
@@ -45,13 +48,17 @@ public class WeaponController : MonoBehaviour
 
     private void Shoot()
     {
+        MuzzleFire();
+
+        MuzzleRandomRotate();
+
         GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
-        _bulletObject.transform.position = weapon_muzzle.position;
-        _bulletObject.transform.rotation = weapon_muzzle.rotation;
+        _bulletObject.transform.position = muzzle.position;
+        _bulletObject.transform.rotation = muzzle.rotation;
 
         Bullet _bullet = _bulletObject.GetComponent<Bullet>();
             
-        Vector2 _muzzleTrans = new Vector2(weapon_muzzle.right.x, weapon_muzzle.right.y);  
+        Vector2 _muzzleTrans = new Vector2(muzzle.right.x, muzzle.right.y);  
 
         _bullet.rb2D.velocity = _muzzleTrans * _bullet.bullet_speed;
     }
@@ -66,8 +73,24 @@ public class WeaponController : MonoBehaviour
 
     }
 
-    private void MuzzleRotate()
+    private void MuzzleRandomRotate()
     {
-           
+        float _randomRotate = Random.Range(-5f, 5f);
+
+        muzzle.localEulerAngles = new Vector3(0, 0, _randomRotate);
+    }
+
+    private void MuzzleFire()
+    {
+        IEnumerator playMuzzleFire = PlayMuzzleFire();
+
+        StartCoroutine(playMuzzleFire);
+    }
+
+    private IEnumerator PlayMuzzleFire()
+    {
+        muzzle_fire.SetActive(true);
+        yield return new WaitForSeconds(Time.deltaTime * 15);
+        muzzle_fire.SetActive(false);
     }
 }
