@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    public PlayerContro holder;
+
+
     public float shoot_speed;
     public Transform muzzle;
     public GameObject bulletPrefab;
     public GameObject muzzle_fire;
-
+    public GameObject throwEggshell;
+    public PlayerContro playerController;
+    public Transform throwEggshellPoint;
     private string BulletName;
-
     private float shoot_timer = 0;
 
     private void Start()
@@ -41,16 +46,21 @@ public class WeaponController : MonoBehaviour
         if (shoot_timer >= shooting_interval)
         {
             shoot_timer = 0;
-            Debug.Log("·¢Éä");
             Shoot();
         }
     }
 
     private void Shoot()
     {
+        holder.camaraController.ShakeCamera(0.1f, 1f, 1f);
+
+        WeaponRecoil();
+
         MuzzleFire();
 
         MuzzleRandomRotate();
+
+        ThrowEggshell();
 
         GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
         _bulletObject.transform.position = muzzle.position;
@@ -92,5 +102,28 @@ public class WeaponController : MonoBehaviour
         muzzle_fire.SetActive(true);
         yield return new WaitForSeconds(Time.deltaTime * 15);
         muzzle_fire.SetActive(false);
+    }
+
+    private void WeaponRecoil()
+    {
+        playerController.PlayerBack();
+    }
+
+    private void ThrowEggshell()
+    {
+        GameObject eggshell = Instantiate(throwEggshell, throwEggshellPoint.transform.position, throwEggshell.transform.rotation);
+
+        Vector2 shootDirection;
+
+        if (throwEggshellPoint.transform.eulerAngles.y == 0)
+        {
+            shootDirection = new Vector3(-0.5f, 0.5f);
+        }
+        else
+        {
+            shootDirection = new Vector3(0.5f, 0.5f);
+        }
+
+        eggshell.GetComponent<Rigidbody2D>().velocity = shootDirection * 10f;
     }
 }

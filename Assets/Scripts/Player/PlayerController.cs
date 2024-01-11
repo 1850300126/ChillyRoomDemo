@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControler : MonoBehaviour
 {
 
-    public float runSpeed;
+/*    public float runSpeed;
     public float jumpSpeed;
     public bool canDoubleJump;
     public bool canFlip;
@@ -123,7 +123,7 @@ public class PlayerControler : MonoBehaviour
         {
             currentWeapon.Fire();
         }
-    }
+    }*/
 }
 
 
