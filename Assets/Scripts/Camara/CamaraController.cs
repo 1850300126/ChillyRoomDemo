@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class CamaraController : MonoBehaviour
     public Transform right_follow_point;
 
     public CinemachineVirtualCamera main_cm;
+    public CinemachineVirtualCamera death_cm;
     private CinemachineBasicMultiChannelPerlin noiseProfile;
 
     private void Awake()
@@ -50,5 +52,19 @@ public class CamaraController : MonoBehaviour
             noiseProfile.m_AmplitudeGain = 0;
             noiseProfile.m_FrequencyGain = 0;
         }
+    }
+
+    public void DeathCamera()
+    {
+
+        death_cm.gameObject.SetActive(true);
+        // main_cm.m_Follow = PlayerManager.instance.GetPlayerTransform();
+        /*        DOVirtual.Float
+                (
+                    main_cm.m_Lens.OrthographicSize, 3, 1f, (current_frame_value) =>
+                    {
+                        main_cm.m_Lens.OrthographicSize = current_frame_value;
+                    }
+                );*/
     }
 }

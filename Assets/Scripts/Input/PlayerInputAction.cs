@@ -132,6 +132,74 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""SwitchWeapon"",
+            ""id"": ""816fb5cd-f04d-43eb-a4c4-f9959395c43f"",
+            ""actions"": [
+                {
+                    ""name"": ""SwitchFirstWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""2c82f9b3-a7cd-4031-bb4f-d5ac8445553d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchSecondWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""aafceb3f-69fb-46c3-813a-6b3518781d20"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchThirdWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""46499218-9432-4771-89d3-d1c5c2cd904c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6992aefd-77bd-4d72-b120-6e416ea964ab"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchFirstWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53cbc1fd-7b9b-459a-892e-10138dc10761"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchSecondWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7539cbf6-38d7-42f8-afb8-1d1367c28bda"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchThirdWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -142,6 +210,11 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Movement_Jump = m_Movement.FindAction("Jump", throwIfNotFound: true);
         m_Movement_Attack = m_Movement.FindAction("Attack", throwIfNotFound: true);
         m_Movement_LockDirection = m_Movement.FindAction("LockDirection", throwIfNotFound: true);
+        // SwitchWeapon
+        m_SwitchWeapon = asset.FindActionMap("SwitchWeapon", throwIfNotFound: true);
+        m_SwitchWeapon_SwitchFirstWeapon = m_SwitchWeapon.FindAction("SwitchFirstWeapon", throwIfNotFound: true);
+        m_SwitchWeapon_SwitchSecondWeapon = m_SwitchWeapon.FindAction("SwitchSecondWeapon", throwIfNotFound: true);
+        m_SwitchWeapon_SwitchThirdWeapon = m_SwitchWeapon.FindAction("SwitchThirdWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -269,11 +342,79 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         }
     }
     public MovementActions @Movement => new MovementActions(this);
+
+    // SwitchWeapon
+    private readonly InputActionMap m_SwitchWeapon;
+    private List<ISwitchWeaponActions> m_SwitchWeaponActionsCallbackInterfaces = new List<ISwitchWeaponActions>();
+    private readonly InputAction m_SwitchWeapon_SwitchFirstWeapon;
+    private readonly InputAction m_SwitchWeapon_SwitchSecondWeapon;
+    private readonly InputAction m_SwitchWeapon_SwitchThirdWeapon;
+    public struct SwitchWeaponActions
+    {
+        private @PlayerInputAction m_Wrapper;
+        public SwitchWeaponActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SwitchFirstWeapon => m_Wrapper.m_SwitchWeapon_SwitchFirstWeapon;
+        public InputAction @SwitchSecondWeapon => m_Wrapper.m_SwitchWeapon_SwitchSecondWeapon;
+        public InputAction @SwitchThirdWeapon => m_Wrapper.m_SwitchWeapon_SwitchThirdWeapon;
+        public InputActionMap Get() { return m_Wrapper.m_SwitchWeapon; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(SwitchWeaponActions set) { return set.Get(); }
+        public void AddCallbacks(ISwitchWeaponActions instance)
+        {
+            if (instance == null || m_Wrapper.m_SwitchWeaponActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_SwitchWeaponActionsCallbackInterfaces.Add(instance);
+            @SwitchFirstWeapon.started += instance.OnSwitchFirstWeapon;
+            @SwitchFirstWeapon.performed += instance.OnSwitchFirstWeapon;
+            @SwitchFirstWeapon.canceled += instance.OnSwitchFirstWeapon;
+            @SwitchSecondWeapon.started += instance.OnSwitchSecondWeapon;
+            @SwitchSecondWeapon.performed += instance.OnSwitchSecondWeapon;
+            @SwitchSecondWeapon.canceled += instance.OnSwitchSecondWeapon;
+            @SwitchThirdWeapon.started += instance.OnSwitchThirdWeapon;
+            @SwitchThirdWeapon.performed += instance.OnSwitchThirdWeapon;
+            @SwitchThirdWeapon.canceled += instance.OnSwitchThirdWeapon;
+        }
+
+        private void UnregisterCallbacks(ISwitchWeaponActions instance)
+        {
+            @SwitchFirstWeapon.started -= instance.OnSwitchFirstWeapon;
+            @SwitchFirstWeapon.performed -= instance.OnSwitchFirstWeapon;
+            @SwitchFirstWeapon.canceled -= instance.OnSwitchFirstWeapon;
+            @SwitchSecondWeapon.started -= instance.OnSwitchSecondWeapon;
+            @SwitchSecondWeapon.performed -= instance.OnSwitchSecondWeapon;
+            @SwitchSecondWeapon.canceled -= instance.OnSwitchSecondWeapon;
+            @SwitchThirdWeapon.started -= instance.OnSwitchThirdWeapon;
+            @SwitchThirdWeapon.performed -= instance.OnSwitchThirdWeapon;
+            @SwitchThirdWeapon.canceled -= instance.OnSwitchThirdWeapon;
+        }
+
+        public void RemoveCallbacks(ISwitchWeaponActions instance)
+        {
+            if (m_Wrapper.m_SwitchWeaponActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(ISwitchWeaponActions instance)
+        {
+            foreach (var item in m_Wrapper.m_SwitchWeaponActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_SwitchWeaponActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public SwitchWeaponActions @SwitchWeapon => new SwitchWeaponActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnLockDirection(InputAction.CallbackContext context);
+    }
+    public interface ISwitchWeaponActions
+    {
+        void OnSwitchFirstWeapon(InputAction.CallbackContext context);
+        void OnSwitchSecondWeapon(InputAction.CallbackContext context);
+        void OnSwitchThirdWeapon(InputAction.CallbackContext context);
     }
 }

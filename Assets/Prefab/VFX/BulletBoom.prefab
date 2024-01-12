@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 262899752739647914}
   - component: {fileID: 8629622683945642530}
-  - component: {fileID: 7699868196164006177}
   - component: {fileID: 773310119112545275}
+  - component: {fileID: -5934674240200310870}
   m_Layer: 0
   m_Name: BulletBoom
   m_TagString: Untagged
@@ -55,18 +55,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7699868196164006177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2602390367926777380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f1ce0b0a54295944843aa6294877507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &773310119112545275
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -119,3 +107,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5934674240200310870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602390367926777380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1ce0b0a54295944843aa6294877507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

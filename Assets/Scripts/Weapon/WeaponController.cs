@@ -15,7 +15,6 @@ public class WeaponController : MonoBehaviour
     public GameObject throwEggshell;
     public PlayerContro playerController;
     public Transform throwEggshellPoint;
-    private string BulletName;
     private float shoot_timer = 0;
 
     private void Start()
@@ -61,23 +60,11 @@ public class WeaponController : MonoBehaviour
         MuzzleRandomRotate();
 
         ThrowEggshell();
-
-        // GameObject _bulletObject = PoolSystem.instance.GetGameObject(BulletName);
-        // _bulletObject.transform.position = muzzle.position;
-        // _bulletObject.transform.rotation = muzzle.rotation;
-
-        // Bullet _bullet = _bulletObject.GetComponent<Bullet>();
-            
-        // Vector2 _muzzleTrans = new Vector2(muzzle.right.x, muzzle.right.y);  
-
-        // _bullet.rb2D.velocity = _muzzleTrans * _bullet.bullet_speed;
     }
 
     private GameObject GetBullet()
     {
         GameObject _obj = Instantiate(bulletPrefab);
-
-        BulletName = _obj.name;
 
         return _obj;
 
@@ -106,7 +93,7 @@ public class WeaponController : MonoBehaviour
 
     private void WeaponRecoil()
     {
-        playerController.PlayerBack();
+        // playerController.PlayerBack();
     }
 
     private void ThrowEggshell()

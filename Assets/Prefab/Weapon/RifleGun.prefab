@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760508839154737537}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6268078, w: 0.779174}
   m_LocalPosition: {x: -0.45, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1438928750342758541}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.63}
 --- !u!1 &5152871434600684744
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,9 +112,7 @@ MonoBehaviour:
   holder: {fileID: 0}
   shootSpeed: 10
   muzzle: {fileID: 8006240502917608995}
-  bulletPrefab: {fileID: 2060928807209340948, guid: 7ffcd102cab88d442a1a1bdf887bc589, type: 3}
   muzzle_fire: {fileID: 1362605976994189673}
-  throwEggshell: {fileID: 5962042112238214650, guid: 67d6787a516451844aee0b4fdf91fb7d, type: 3}
   throwEggshellPoint: {fileID: 3945380865477865139}
 --- !u!1001 &3679736104649188832
 PrefabInstance:

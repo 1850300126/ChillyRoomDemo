@@ -110,6 +110,74 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "SwitchWeapon",
+            "id": "816fb5cd-f04d-43eb-a4c4-f9959395c43f",
+            "actions": [
+                {
+                    "name": "SwitchFirstWeapon",
+                    "type": "Button",
+                    "id": "2c82f9b3-a7cd-4031-bb4f-d5ac8445553d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchSecondWeapon",
+                    "type": "Button",
+                    "id": "aafceb3f-69fb-46c3-813a-6b3518781d20",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchThirdWeapon",
+                    "type": "Button",
+                    "id": "46499218-9432-4771-89d3-d1c5c2cd904c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "6992aefd-77bd-4d72-b120-6e416ea964ab",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchFirstWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53cbc1fd-7b9b-459a-892e-10138dc10761",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchSecondWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7539cbf6-38d7-42f8-afb8-1d1367c28bda",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchThirdWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

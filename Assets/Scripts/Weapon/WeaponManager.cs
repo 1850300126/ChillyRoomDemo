@@ -15,7 +15,10 @@ public class WeaponInfo
 public class WeaponManager : MonoBehaviour
 {   
     // ×Óµ¯Ô¤ÖÆ
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab;    
+    // Å×¿ÇÔ¤ÖÆ
+    public GameObject throwEggshell;
+    // ÎäÆ÷Ô¤ÖÆ
     public List<WeaponInfo> weapons = new List<WeaponInfo>();
 
     public static WeaponManager instance;
@@ -46,6 +49,12 @@ public class WeaponManager : MonoBehaviour
 
                 _targetWeapon.Init(holder);
 
+                _targetWeapon.transform.parent = holder.weaponPoint.transform;
+
+                _targetWeapon.transform.localPosition = Vector3.zero;
+
+                _targetWeapon.transform.localRotation = Quaternion.identity;
+
                 return _targetWeapon;
             }
         }
@@ -55,6 +64,8 @@ public class WeaponManager : MonoBehaviour
     public void PushPool()
     {
         PoolSystem.instance.AddPool("bullet", bulletPrefab, 50);
+
+        PoolSystem.instance.AddPool("eggShell", throwEggshell, 50);
     }
     public void DestroyCurrentWeapon(WeaponBase weapon)
     {

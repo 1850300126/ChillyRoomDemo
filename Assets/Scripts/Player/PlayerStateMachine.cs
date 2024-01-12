@@ -12,6 +12,7 @@ public class PlayerStateMachine : StateMachine
     public PlayerJumpState playerJumpState { get; }
     public PlayerRunState playerRunState { get; }
     public PlayerFallState playerFallState { get; }
+    public PlayerDeathState playerDeathState { get; }
 
     public PlayerStateMachine(PlayerContro playerController)
     {
@@ -26,6 +27,8 @@ public class PlayerStateMachine : StateMachine
         playerRunState = new PlayerRunState(this);
 
         playerFallState = new PlayerFallState(this);
+
+        playerDeathState = new PlayerDeathState(this);
     }
 
 }

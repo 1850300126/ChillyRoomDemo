@@ -15,8 +15,6 @@ public class RifleGun : WeaponBase
     public Transform muzzle;
     // Ç¹¿Ú»ðÑæÔ¤ÖÆ
     public GameObject muzzle_fire;
-    // Å×¿ÇÔ¤ÖÆ
-    public GameObject throwEggshell;
     // Å×¿ÇÎ»ÖÃ
     public Transform throwEggshellPoint;
     private float shoot_timer = 0;
@@ -54,8 +52,8 @@ public class RifleGun : WeaponBase
     private void Shoot()
     {   
         // ¿ØÖÆÕßÆÁÄ»Õð¶¯
-        holder.camaraController.ShakeCamera(0.1f, 1f, 1f);
-        holder.PlayerBack();
+        holder.camaraController.ShakeCamera(0.1f, 1f, 2f);
+        holder.PlayerBack(0.1f);
 
         // Ç¹¿Ú»ðÑæ
         MuzzleFire();
@@ -92,7 +90,8 @@ public class RifleGun : WeaponBase
 
     private void ThrowEggshell()
     {
-        GameObject eggshell = Instantiate(throwEggshell, throwEggshellPoint.transform.position, throwEggshell.transform.rotation);
+        // GameObject eggshell = Instantiate(throwEggshell, throwEggshellPoint.transform.position, throwEggshell.transform.rotation);
+        GameObject eggshell = PoolSystem.instance.PushFromPoolAndDistoryByTime("eggShell", throwEggshellPoint.transform.position, throwEggshellPoint.transform.rotation, 5f);
 
         Vector2 shootDirection;
 

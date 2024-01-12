@@ -102,6 +102,7 @@ MonoBehaviour:
   rb2D: {fileID: -4460322391334519971}
   bullet_speed: 50
   bulletBoom: {fileID: 2602390367926777380, guid: 03e470100fc75a84886096a3e12c907f, type: 3}
+  BoomSmoke: {fileID: 9194812540703936429, guid: 7e1b5b2db1306b442be9febc0fcc0d5d, type: 3}
 --- !u!50 &-4460322391334519971
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +145,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

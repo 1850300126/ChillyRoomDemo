@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 213463998027774515}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.583, y: 0.87, z: 0}
+  m_LocalPosition: {x: 1.138, y: 0.05, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -170,13 +170,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1644764009186696299}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.45, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.6268078, w: 0.779174}
+  m_LocalPosition: {x: -0.51, y: 0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3035540107429326682}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 77.63}
 --- !u!1 &2921770684401209008
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +232,6 @@ MonoBehaviour:
   - {fileID: 1509355779288802554}
   - {fileID: 8157521490354777097}
   muzzle_fire: {fileID: 213463998027774515}
-  throwEggshell: {fileID: 5962042112238214650, guid: 67d6787a516451844aee0b4fdf91fb7d, type: 3}
   throwEggshellPoint: {fileID: 1763788661553293144}
 --- !u!1 &2936178858403181873
 GameObject:
@@ -290,7 +289,7 @@ Transform:
   m_GameObject: {fileID: 3956348044305287476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.87, z: 0}
+  m_LocalPosition: {x: 0.45, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
