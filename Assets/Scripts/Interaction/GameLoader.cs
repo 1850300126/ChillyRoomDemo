@@ -52,7 +52,7 @@ public class GameLoader : MonoBehaviour
 
     public void LoadMainScene()
     {
-        LoadStage("Assets/Scenes/MainMenu.unity", LoadMoudle);
+        LoadStage("Assets/Scenes/DemoScene.unity", LoadMoudle);
     }
     public void LoadStage(string path, UnityAction unityAction)
     {
