@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class PlayerHPUI : MonoBehaviour
+public class PlayerUI : MonoBehaviour
 {
     public Image spirit_ui_green;
     public Image spirit_ui_red;

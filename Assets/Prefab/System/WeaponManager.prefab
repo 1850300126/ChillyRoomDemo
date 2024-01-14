@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3840213672597018242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8542188305823841148}
+  - component: {fileID: 4387601963663980591}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8542188305823841148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840213672597018242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4387601963663980591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3840213672597018242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8fef08bf4c4a044d959a41ef20c915e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 2060928807209340948, guid: 7ffcd102cab88d442a1a1bdf887bc589, type: 3}
+  throwEggshell: {fileID: 5962042112238214650, guid: 67d6787a516451844aee0b4fdf91fb7d, type: 3}
+  weapons:
+  - weaponName: RifleGun
+    weapon: {fileID: 8652161188572126548, guid: e13fabfd40de4e842910d03b34e850dc, type: 3}
+  - weaponName: ShotGun
+    weapon: {fileID: 8269179590713463712, guid: 78cd08b3e3a3465449ba2110055da6cd, type: 3}
+  - weaponName: HandGun
+    weapon: {fileID: 3641533144378431841, guid: ced2c058d83f5dc4c8067466e69204d9, type: 3}

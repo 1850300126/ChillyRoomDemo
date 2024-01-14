@@ -16,6 +16,9 @@ public class CamaraController : MonoBehaviour
     private void Awake()
     {
         noiseProfile = main_cm.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+
+        main_cm.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = GameObject.Find("CinemachineCollider").GetComponent<PolygonCollider2D>();
+        death_cm.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D = GameObject.Find("CinemachineCollider").GetComponent<PolygonCollider2D>();
     }
 
     public void SwitchFollowPoint(bool left)

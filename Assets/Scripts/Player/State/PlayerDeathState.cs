@@ -23,7 +23,6 @@ public class PlayerDeathState : PlayerStateBase
 
     public void PlayerDeath()
     {
-        Time.timeScale = 0.2f;
         playerStateMachine.playerController.camaraController.DeathCamera();
 
         PlayerBack();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using EasyUpdateDemoSDK;
 using UnityEngine;
 public enum EnemyState
 {
@@ -139,6 +140,8 @@ public class EnemyController : MonoBehaviour, IBeAttack
             animator.SetTrigger("isDead");
 
             Invoke(nameof(DestroySelf), 10f);
+
+            MsgSystem.instance.SendMsg("EnemyDead", null);
         }
     }
 

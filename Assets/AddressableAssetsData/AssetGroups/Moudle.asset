@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Moudle
+  m_EditorClassIdentifier: 
+  m_GroupName: Moudle
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9eb8f39c408f04f49aaa3012d326519d
+  m_SerializeEntries:
+  - m_GUID: c97fcc5ceb836c14fbb93f2296cf93ed
+    m_Address: Assets/Prefab/System/EnemyManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b15c598b2026219418c2bb23c0c7d193
+    m_Address: Assets/Prefab/System/PlayerManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b9f66ff6351d3c74e90dbe79fbfeba62
+    m_Address: Assets/Prefab/System/WeaponManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43c2add414fa81f48b9d7b9921d0c861
+    m_Address: Assets/Prefab/System/GameLogicManager.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b623426123482df438e64af33bdfae44, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 29574314900cf1f4ba9df6c631d33d6d, type: 2}
+    - {fileID: 11400000, guid: 534fa9ec6e250114bb476cbd77948632, type: 2}

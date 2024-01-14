@@ -1,5 +1,6 @@
 
 using System.Collections;
+using EasyUpdateDemoSDK;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.WSA;
@@ -27,7 +28,7 @@ public class PlayerContro : MonoBehaviour, IBeAttack
     public BoxCollider2D playerFeet;
     public PlayerInput player_input;
     public CamaraController camaraController;
-
+    public PlayerUI playerHPUI;
 
 
     public WeaponBase current_weapon;
@@ -60,29 +61,37 @@ public class PlayerContro : MonoBehaviour, IBeAttack
             damageEnable = value;
         }
     }
+    // Start is called before the first frame update
+    // void Start()
+    // {
+    //     Init();
+    // }
 
-    private void Awake()
-    {
+    public void Init()
+    {        
         playerStateMachine = new PlayerStateMachine(this);
 
         myRigidBody2D = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponentInChildren<Animator>();
         playerFeet = GetComponent<BoxCollider2D>();
         player_input = GetComponent<PlayerInput>();
-        camaraController = GetComponent<CamaraController>();
+        myAnimator = GetComponentInChildren<Animator>();
+        camaraController = GetComponentInChildren<CamaraController>();
 
+        if (transform.transform.localEulerAngles == Vector3.zero)
+        {
+            camaraController.SwitchFollowPoint(true);
+        }
+        else
+        {
+            camaraController.SwitchFollowPoint(false);
+        }
 
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        Init();
+        playerStateMachine.ChangeState(playerStateMachine.playerIdleState);
 
-        current_weapon = WeaponManager.instance.GetWeaponFromName(this, "HandGun");
+        current_weapon = WeaponManager.instance.GetWeaponFromName(this, "RifleGun");
 
         AddInputAction();
     }
-
     private void OnDestroy()
     {
         RemoveInputAction();
@@ -139,19 +148,6 @@ public class PlayerContro : MonoBehaviour, IBeAttack
         player_input.playerInputAciton.SwitchWeapon.SwitchSecondWeapon.started -= SelectWeapon;
         player_input.playerInputAciton.SwitchWeapon.SwitchThirdWeapon.started -= SelectWeapon;
     }
-    private void Init()
-    {
-        if (transform.transform.localEulerAngles == Vector3.zero)
-        {
-            camaraController.SwitchFollowPoint(true);
-        }
-        else
-        {
-            camaraController.SwitchFollowPoint(false);
-        }
-
-        playerStateMachine.ChangeState(playerStateMachine.playerIdleState);
-    }
     private void Fire()
     {
         if (!fire) return;
@@ -181,15 +177,15 @@ public class PlayerContro : MonoBehaviour, IBeAttack
         {
             case "SwitchFirstWeapon":
                 current_weapon = WeaponManager.instance.GetWeaponFromName(this, "RifleGun");
-                GameUIManager.Instance.playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"red\">¶ÏÆÇ</color>");
+                playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"red\">¶ÏÆÇ</color>");
                 break;
             case "SwitchSecondWeapon":
                 current_weapon = WeaponManager.instance.GetWeaponFromName(this, "ShotGun");
-                GameUIManager.Instance.playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"blue\">Ó«Ñæ</color>");
+                playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"blue\">Ó«Ñæ</color>");
                 break;
             case "SwitchThirdWeapon":
                 current_weapon = WeaponManager.instance.GetWeaponFromName(this, "HandGun");
-                GameUIManager.Instance.playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"purple\">×¹Ã÷</color>");
+                playerHPUI.UpdateSwitchWeaponUIText("ÇÐ»»Îª" + "<color=\"purple\">×¹Ã÷</color>");
                 break;
             default:
                 break;
@@ -214,12 +210,16 @@ public class PlayerContro : MonoBehaviour, IBeAttack
     {
         playerHP -= 2f;
 
-        GameUIManager.Instance.playerHPUI.UpdateUI(playerHP / 10f);
+        playerHPUI.UpdateUI(playerHP / 10f);
 
         if (playerHP <= 0)
         {
+            
+            Time.timeScale = 0.3f;
             damageEnable = false;
             playerStateMachine.ChangeState(playerStateMachine.playerDeathState);
+            MsgSystem.instance.SendMsg("PlayerDead", null);
+            
         }
     }
     private void BeHitFlash(int value)

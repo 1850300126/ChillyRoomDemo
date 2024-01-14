@@ -24,7 +24,7 @@ public class EnemyManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    public void OnLoaded()
     {
         StartCoroutine(nameof(CreateInterval), createCount);
     }
@@ -53,5 +53,10 @@ public class EnemyManager : MonoBehaviour
 
             _enemyObj.GetComponent<EnemyController>().Init();
         }
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }

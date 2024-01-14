@@ -27,7 +27,8 @@ public class WeaponManager : MonoBehaviour
         instance = this;
     }
 
-    void Start()
+
+    public void OnLoaded()
     {
         PushPool();
     }
@@ -70,5 +71,9 @@ public class WeaponManager : MonoBehaviour
     public void DestroyCurrentWeapon(WeaponBase weapon)
     {
         Destroy(weapon.gameObject);
+    }
+    public void DestroySelf()
+    {
+        Destroy(this.gameObject);
     }
 }
